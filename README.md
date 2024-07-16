@@ -1,8 +1,8 @@
-# 📱 Blog App
+# 📱 Next Auth App
 
 ## 📝 Description
 
-Next Auth App is a Tech Assessment Project to demonstrate knowledge of Next.js. It allows you to signup and login
+Next Auth App is a Tech Assessment Project to demonstrate knowledge of Next.js. It allows you to signup and login, protecting routes from unauthorized access. It uses approuter version.
 
 ## 🛠️ Code Quality and Best Practices
 
@@ -33,6 +33,7 @@ It includes a built-in db through the use of this file `services\api.services.ts
 - **Next.js:** As the chosen framework to build with.
 - **React:** As the UI library in the background.
 - **TypeScript:** Adding strong static types and advanced features to improve large-scale development and code maintainability.
+- **Lucia:** for authentication.
 
 ## 🌟 Special Features
 
