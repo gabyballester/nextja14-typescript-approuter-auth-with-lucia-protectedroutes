@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import {
   createAuthSession,
   createUser,
+  destroySession,
   getUserByEmail,
   hashUserPassword,
   verifyPassword,
@@ -112,4 +113,9 @@ export const authAction = async (
     return loginAction(prevState, formData);
   }
   return signupAction(prevState, formData);
+};
+
+export const logoutAction = async () => {
+  await destroySession();
+  redirect("/");
 };

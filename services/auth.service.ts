@@ -69,3 +69,21 @@ export const verifyAuth = async (): Promise<{ user: any; session: any }> => {
 
   return result;
 };
+
+export const destroySession = async () => {
+  const { session } = await verifyAuth();
+  if (!session) {
+    return {
+      error: "Unauthorized!",
+    };
+  }
+
+  await lucia.invalidateSession(session.id);
+
+  const sessionCookie = lucia.createBlankSessionCookie();
+  cookies().set(
+    sessionCookie.name,
+    sessionCookie.value,
+    sessionCookie.attributes
+  );
+};
