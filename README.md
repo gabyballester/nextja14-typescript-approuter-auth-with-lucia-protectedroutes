@@ -41,6 +41,8 @@ It includes a built-in db through the use of this file `services\api.services.ts
 
 - **Server Actions:** The application uses Server Actions to efficiently and securely handle server actions.
 
+- **Authentication with Lucia:** Lucia is an authentication tool used to securely verify user identities. Its main purpose is to ensure that only authorized individuals can access certain parts of the application or perform specific actions. This helps protect sensitive information and maintain data integrity and security.
+
 ## 📦 Prepare for production
 
 1. Install image optimization package sharp.

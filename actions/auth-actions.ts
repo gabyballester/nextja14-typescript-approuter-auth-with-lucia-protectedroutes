@@ -1,9 +1,9 @@
 "use server";
 
 import { redirect } from "next/navigation";
-import { SignupFormStateErrors, SignupFormState } from "@/components";
-import { createUser, hashUserPassword } from "@/services";
+import { createAuthSession, createUser, hashUserPassword } from "@/services";
 import Database from "better-sqlite3";
+import { SignupFormState, SignupFormStateErrors } from "@/types";
 
 export const signup = async (
   _prevState: SignupFormStateErrors,
@@ -25,8 +25,6 @@ export const signup = async (
     errors.password = "Password must be at least 8 characters long.";
   }
 
-  console.log({ errors });
-
   if (errors.email || errors.password) {
     return {
       errors,
@@ -36,7 +34,9 @@ export const signup = async (
   const hashedPassword = hashUserPassword(password);
 
   try {
-    createUser(email, hashedPassword);
+    const id = createUser(email, hashedPassword);
+    await createAuthSession(id);
+    redirect("/training");
   } catch (error) {
     if (error instanceof Database.SqliteError) {
       if (error.code === "SQLITE_CONSTRAINT_UNIQUE") {
@@ -51,6 +51,4 @@ export const signup = async (
     }
     throw error;
   }
-  // store it in the database (create a new user)
-  redirect("/training");
 };
