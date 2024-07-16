@@ -22,6 +22,12 @@ npm install
 npm run dev
 ```
 
+## 🗄️ Database
+
+This application uses SQLite as its database. Ensure that the SQLite database is properly set up before running the application.
+
+It includes a built-in db through the use of this file `services\api.services.ts` which recreates the db if it doesn't exist.
+
 ## 📚 Base libraries used
 
 - **Next.js:** As the chosen framework to build with.
