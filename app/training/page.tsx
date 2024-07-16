@@ -1,6 +1,13 @@
-import { getTrainings } from "@/services";
+import { redirect } from "next/navigation";
+import { getTrainings, verifyAuth } from "@/services";
 
 export default async function TrainingPage() {
+  const result = await verifyAuth();
+
+  if (!result.user) {
+    return redirect("/");
+  }
+
   const trainingSessions = getTrainings();
 
   return (
