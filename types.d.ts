@@ -20,3 +20,12 @@ export interface Training {
 export interface TrainingCount {
   count: number;
 }
+
+export type SignupFormState = {
+  email: string;
+  password: string;
+};
+
+export type SignupFormStateErrors = {
+  errors: SignupFormState;
+};

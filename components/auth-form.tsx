@@ -4,22 +4,14 @@ import Link from "next/link";
 import { FieldType, FormField } from "./form-field";
 import { signup } from "@/actions";
 import { useFormState } from "react-dom";
+import { SignupFormState, SignupFormStateErrors } from "@/types";
 
 const fields: FieldType[] = [
   { label: "Email", type: "email", name: "email", id: "email" },
   { label: "Password", type: "password", name: "password", id: "password" },
 ];
 
-export type FormState = {
-  email: string;
-  password: string;
-};
-
-export type Errors = {
-  errors: FormState;
-};
-
-const initialSignupState: Errors = {
+const initialSignupState: SignupFormStateErrors = {
   errors: {
     email: "",
     password: "",
@@ -46,8 +38,8 @@ export const AuthForm = () => {
       ))}
       {formState.errors && (
         <ul id="form-errors">
-          {(Object.keys(formState.errors) as Array<keyof FormState>).map(
-            (error) => (
+          {(Object.keys(formState.errors) as Array<keyof SignupFormState>).map(
+            (error: keyof SignupFormState) => (
               <li key={error}>{formState.errors[error]}</li>
             )
           )}

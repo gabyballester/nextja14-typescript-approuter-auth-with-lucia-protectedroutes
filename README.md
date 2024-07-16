@@ -36,6 +36,11 @@ It includes a built-in db through the use of this file `services\api.services.ts
 
 ## 🌟 Special Features
 
+- **Form Management and Validation**
+  The application leverages useFormState and useFormStatus to manage forms and handle button interactions, ensuring seamless user experiences and maintaining data integrity.
+
+- **Server Actions:** The application uses Server Actions to efficiently and securely handle server actions.
+
 ## 📦 Prepare for production
 
 1. Install image optimization package sharp.

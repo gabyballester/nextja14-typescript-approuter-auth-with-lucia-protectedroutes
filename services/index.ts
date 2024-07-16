@@ -1,2 +1,3 @@
-export * from './api.services';
-export * from './db.services';
+export * from './api.service';
+export * from './db.service';
+export * from './hash.service';
