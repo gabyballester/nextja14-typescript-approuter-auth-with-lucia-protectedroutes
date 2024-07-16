@@ -13,7 +13,7 @@ body {
   /* background-color: #333236; */
   background: linear-gradient(#121214, #272629);
   color: #d0cfd6;
-  min-height: 100vh;
+  min-height: calc(100vh - 7rem);
 }
 
 h1 {
@@ -32,7 +32,7 @@ ul {
   max-width: 40rem;
   border-radius: 6px;
   padding: 3rem 4rem;
-  margin: 5rem auto;
+  margin: 7rem auto;
   background-color: #b8b4c3;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.4);
 }
