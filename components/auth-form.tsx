@@ -2,16 +2,16 @@
 
 import Link from "next/link";
 import { FieldType, FormField } from "./form-field";
-import { signup } from "@/actions";
+import { authAction } from "@/actions";
 import { useFormState } from "react-dom";
-import { SignupFormState, SignupFormStateErrors } from "@/types";
+import { AuthFormState, AuthFormStateErrors } from "@/types";
 
 const fields: FieldType[] = [
   { label: "Email", type: "email", name: "email", id: "email" },
   { label: "Password", type: "password", name: "password", id: "password" },
 ];
 
-const initialSignupState: SignupFormStateErrors = {
+const initialSignupState: AuthFormStateErrors = {
   errors: {
     email: "",
     password: "",
@@ -19,7 +19,7 @@ const initialSignupState: SignupFormStateErrors = {
 };
 
 export const AuthForm = ({ mode }: { mode: string }) => {
-  const [formState, formAction] = useFormState(signup, initialSignupState);
+  const [formState, formAction] = useFormState(authAction.bind(null, mode), initialSignupState);
 
   return (
     <form id="auth-form" action={formAction}>
@@ -38,8 +38,8 @@ export const AuthForm = ({ mode }: { mode: string }) => {
       ))}
       {formState.errors && (
         <ul id="form-errors">
-          {(Object.keys(formState.errors) as Array<keyof SignupFormState>).map(
-            (error: keyof SignupFormState) => (
+          {(Object.keys(formState.errors) as Array<keyof AuthFormState>).map(
+            (error: keyof AuthFormState) => (
               <li key={error}>{formState.errors[error]}</li>
             )
           )}
@@ -55,7 +55,7 @@ export const AuthForm = ({ mode }: { mode: string }) => {
           <Link href="/?mode=signup">Create an account</Link>
         )}
         {mode === "signup" && (
-          <Link href="/?mode=login">Create an account</Link>
+          <Link href="/?mode=login">Login with existing account.</Link>
         )}
       </p>
     </form>

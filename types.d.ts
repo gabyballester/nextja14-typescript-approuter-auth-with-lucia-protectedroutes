@@ -21,11 +21,11 @@ export interface TrainingCount {
   count: number;
 }
 
-export type SignupFormState = {
+export type AuthFormState = {
   email: string;
   password: string;
 };
 
-export type SignupFormStateErrors = {
-  errors: SignupFormState;
+export type AuthFormStateErrors = {
+  errors: AuthFormState;
 };
